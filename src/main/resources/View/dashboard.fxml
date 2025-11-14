@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="                 -fx-background-color: linear-gradient(to bottom right, #8ec5fc, #e0c3fc, #ffffff);                 -fx-padding: 20;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardController">
+
+    <children>
+
+        <!-- GLASS CARD -->
+        <VBox layoutX="120.0" layoutY="58.0" prefHeight="373.0" prefWidth="389.0" spacing="25" style="                 -fx-background-color: rgba(255, 255, 255, 0.30);                 -fx-padding: 35;                 -fx-background-radius: 25;                 -fx-border-color: rgba(255, 255, 255, 0.75);                 -fx-border-width: 1.8;                 -fx-border-radius: 25;                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 30, 0.3, 0, 10);                 -fx-backdrop-filter: blur(20px);">
+
+            <Label text="Thoga Kade Dashboard" textFill="#084E8A">
+                <font>
+                    <Font name="System Bold" size="26.0" />
+                </font>
+            </Label>
+
+            <!-- Customers Button -->
+            <Button onAction="#onActionCustomer" prefHeight="40" prefWidth="305.0" style="                         -fx-background-radius: 12;                         -fx-text-fill: white;                         -fx-font-weight: bold;                         -fx-padding: 8;                         -fx-cursor: hand;                         -fx-background-color: linear-gradient(to right, #4facfe, #00f2fe);                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 15, 0.2, 0, 8);" text="Customers" />
+
+            <!-- Items Button -->
+            <Button onAction="#onActionItem" prefHeight="40" prefWidth="308.0" style="                         -fx-background-radius: 12;                         -fx-text-fill: white;                         -fx-font-weight: bold;                         -fx-padding: 8;                         -fx-cursor: hand;                         -fx-background-color: linear-gradient(to right, #43e97b, #38f9d7);                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 15, 0.2, 0, 8);" text="Items" />
+
+            <!-- Orders Button -->
+            <Button onAction="#onActionOrders" prefHeight="40" prefWidth="310.0" style="                         -fx-background-radius: 12;                         -fx-text-fill: white;                         -fx-font-weight: bold;                         -fx-padding: 8;                         -fx-cursor: hand;                         -fx-background-color: linear-gradient(to right, #fa709a, #fee140);                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 15, 0.2, 0, 8);" text="Orders" />
+
+            <!-- Logout Button -->
+            <Button onAction="#onActionBack" prefHeight="40" prefWidth="314.0" style="                         -fx-background-radius: 12;                         -fx-text-fill: white;                         -fx-font-weight: bold;                         -fx-padding: 8;                         -fx-cursor: hand;                         -fx-background-color: linear-gradient(to right, #f857a6, #ff5858);                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 15, 0.2, 0, 8);" text="Logout" />
+
+        </VBox>
+
+    </children>
+
+</AnchorPane>

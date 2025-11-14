@@ -5,17 +5,71 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            style="
+                -fx-background-color: linear-gradient(to bottom right, #6bb7ff, #e8f4ff, #ffffff);
+                -fx-padding: 20;"
+            xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.LoginController">
+
     <children>
-        <Label layoutX="220.0" layoutY="64.0" text="Thoga Kade Login" textFill="#0963af">
-            <font>
-                <Font name="System Bold" size="24.0" />
-            </font>
-        </Label>
-        <TextField fx:id="usernameField" layoutX="200.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" promptText="Username" />
-        <PasswordField fx:id="passwordField" layoutX="200.0" layoutY="210.0" prefHeight="35.0" prefWidth="200.0" promptText="Password" />
-        <Button layoutX="250.0" layoutY="280.0" mnemonicParsing="false" onAction="#OnAction" prefHeight="35.0" prefWidth="100.0" text="Login" />
+
+        <!-- Glass Card -->
+        <VBox layoutX="150.0" layoutY="60.0" prefWidth="300" spacing="25"
+              style="
+                -fx-background-color: rgba(255,255,255,0.35);
+                -fx-padding: 30;
+                -fx-background-radius: 25;
+                -fx-border-color: rgba(255,255,255,0.5);
+                -fx-border-radius: 25;
+                -fx-border-width: 1.5;
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.30), 20, 0.3, 0, 8);">
+
+            <!-- Title -->
+            <Label text="Thoga Kade Login" textFill="#084E8A">
+                <font>
+                    <Font name="System Bold" size="26.0"/>
+                </font>
+            </Label>
+
+            <!-- Username -->
+            <TextField fx:id="usernameField" promptText="Username"
+                       style="
+                            -fx-background-radius: 12;
+                            -fx-border-radius: 12;
+                            -fx-padding: 10;
+                            -fx-background-color: rgba(255,255,255,0.75);
+                            -fx-border-color: #99c7ff;
+                            -fx-border-width: 1.2;"/>
+
+            <!-- Password -->
+            <PasswordField fx:id="passwordField" promptText="Password"
+                           style="
+                            -fx-background-radius: 12;
+                            -fx-border-radius: 12;
+                            -fx-padding: 10;
+                            -fx-background-color: rgba(255,255,255,0.75);
+                            -fx-border-color: #99c7ff;
+                            -fx-border-width: 1.2;"/>
+
+            <!-- Login Button -->
+            <Button text="Login" onAction="#OnAction"
+                    style="
+                        -fx-background-radius: 12;
+                        -fx-font-weight: bold;
+                        -fx-text-fill: white;
+                        -fx-padding: 10;
+                        -fx-cursor: hand;
+                        -fx-background-color: linear-gradient(to right, #0a6cc6, #4aa8ff);
+                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 15, 0.3, 0, 6);"/>
+        </VBox>
+
     </children>
+
 </AnchorPane>
