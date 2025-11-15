@@ -13,4 +13,8 @@ public class Order {
     private String orderID;
     private LocalDate orderDate;
     private String custID;
+    private String customerName;
+    private double total;
+
+
 }
