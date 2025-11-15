@@ -30,7 +30,7 @@ public class DashboardController {
     void onActionCustomer(ActionEvent event) {
         Stage stage = new Stage();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/Customer.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/CustomerForm.fxml"))));
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage1.close();
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public class DashboardController {
     void onActionItem(ActionEvent event) {
         Stage stage = new Stage();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/Item.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/ItemFrom.fxml"))));
             Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage1.close();
         } catch (IOException e) {

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerFormController">
+    <children>
+        <Label layoutX="300.0" layoutY="30.0" text="Customer Management">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+
+        <Label layoutX="100.0" layoutY="100.0" text="Customer ID:" />
+        <TextField fx:id="txtCustID" layoutX="200.0" layoutY="100.0" prefWidth="150.0" />
+
+        <Label layoutX="100.0" layoutY="140.0" text="Title:" />
+        <ComboBox fx:id="cmbTitle" layoutX="200.0" layoutY="140.0" prefWidth="150.0" />
+
+        <Label layoutX="100.0" layoutY="180.0" text="Name:" />
+        <TextField fx:id="txtCustName" layoutX="200.0" layoutY="180.0" prefWidth="300.0" />
+
+        <Label layoutX="100.0" layoutY="220.0" text="Date of Birth:" />
+        <DatePicker fx:id="dpDob" layoutX="200.0" layoutY="220.0" prefWidth="150.0" />
+
+        <Label layoutX="100.0" layoutY="260.0" text="Salary:" />
+        <TextField fx:id="txtSalary" layoutX="200.0" layoutY="260.0" prefWidth="150.0" />
+
+        <Label layoutX="100.0" layoutY="300.0" text="Address:" />
+        <TextField fx:id="txtCustAddress" layoutX="200.0" layoutY="300.0" prefWidth="300.0" />
+
+        <Label layoutX="100.0" layoutY="340.0" text="City:" />
+        <TextField fx:id="txtCity" layoutX="200.0" layoutY="340.0" prefWidth="150.0" />
+
+        <Label layoutX="100.0" layoutY="380.0" text="Province:" />
+        <TextField fx:id="txtProvince" layoutX="200.0" layoutY="380.0" prefWidth="150.0" />
+
+        <Label layoutX="100.0" layoutY="420.0" text="Postal Code:" />
+        <TextField fx:id="txtPostalCode" layoutX="200.0" layoutY="420.0" prefWidth="150.0" />
+
+        <HBox layoutX="100.0" layoutY="470.0" spacing="10.0">
+            <children>
+                <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveCustomer" text="Save" />
+                <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#updateCustomer" text="Update" />
+                <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteCustomer" text="Delete" />
+                <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#searchCustomer" text="Search" />
+                <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clearFields" text="Clear" />
+                <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backToDashboard" text="Back" />
+            </children>
+        </HBox>
+
+        <TableView fx:id="tblCustomer" layoutX="100.0" layoutY="520.0" prefHeight="150.0" prefWidth="700.0">
+            <columns>
+                <TableColumn fx:id="colCustID" prefWidth="80.0" text="ID" />
+                <TableColumn fx:id="colTitle" prefWidth="60.0" text="Title" />
+                <TableColumn fx:id="colName" prefWidth="120.0" text="Name" />
+                <TableColumn fx:id="colDob" prefWidth="100.0" text="DOB" />
+                <TableColumn fx:id="colSalary" prefWidth="80.0" text="Salary" />
+                <TableColumn fx:id="colAddress" prefWidth="120.0" text="Address" />
+                <TableColumn fx:id="colCity" prefWidth="80.0" text="City" />
+                <TableColumn fx:id="colProvince" prefWidth="80.0" text="Province" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
