@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="                 -fx-background-color: linear-gradient(to bottom right, #8ec5fc, #e0c3fc, #ffffff);                 -fx-padding: 20;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom right, #8ec5fc, #e0c3fc, #ffffff); -fx-padding: 20;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardController">
 
     <children>
 
         <!-- GLASS CARD -->
-        <VBox layoutX="120.0" layoutY="58.0" prefHeight="373.0" prefWidth="389.0" spacing="25" style="                 -fx-background-color: rgba(255, 255, 255, 0.30);                 -fx-padding: 35;                 -fx-background-radius: 25;                 -fx-border-color: rgba(255, 255, 255, 0.75);                 -fx-border-width: 1.8;                 -fx-border-radius: 25;                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 30, 0.3, 0, 10);                 -fx-backdrop-filter: blur(20px);">
+        <VBox layoutX="120.0" layoutY="58.0" prefHeight="373.0" prefWidth="389.0" spacing="25" style=" -fx-background-color: rgba(255, 255, 255, 0.30);-fx-padding: 35;-fx-background-radius: 25;-fx-border-color: rgba(255, 255, 255, 0.75);-fx-border-width: 1.8;-fx-border-radius: 25;-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 30, 0.3, 0, 10);-fx-backdrop-filter: blur(20px);">
 
             <Label text="Thoga Kade Dashboard" textFill="#084E8A">
                 <font>
