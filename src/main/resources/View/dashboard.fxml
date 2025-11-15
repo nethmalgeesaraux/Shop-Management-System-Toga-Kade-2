@@ -1,38 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.FontWeight?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom right, #8ec5fc, #e0c3fc, #ffffff); -fx-padding: 20;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardController">
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="Controller.DashboardController" style="-fx-background-color: linear-gradient(to bottom, #2c3e50, #3498db);">
 
-    <children>
-
-        <!-- GLASS CARD -->
-        <VBox layoutX="120.0" layoutY="58.0" prefHeight="373.0" prefWidth="389.0" spacing="25" style=" -fx-background-color: rgba(255, 255, 255, 0.30);-fx-padding: 35;-fx-background-radius: 25;-fx-border-color: rgba(255, 255, 255, 0.75);-fx-border-width: 1.8;-fx-border-radius: 25;-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 30, 0.3, 0, 10);-fx-backdrop-filter: blur(20px);">
-
-            <Label text="Thoga Kade Dashboard" textFill="#084E8A">
+    <VBox alignment="CENTER" spacing="40" style="-fx-padding: 40;">
+        <!-- Header Section -->
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="🏪 Thoga Kade" style="-fx-text-fill: white; -fx-font-weight: bold;">
                 <font>
-                    <Font name="System Bold" size="26.0" />
+                    <Font name="System Bold" size="36.0" />
                 </font>
             </Label>
-
-            <!-- Customers Button -->
-            <Button onAction="#onActionCustomer" prefHeight="40" prefWidth="305.0" style="                         -fx-background-radius: 12;                         -fx-text-fill: white;                         -fx-font-weight: bold;                         -fx-padding: 8;                         -fx-cursor: hand;                         -fx-background-color: linear-gradient(to right, #4facfe, #00f2fe);                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 15, 0.2, 0, 8);" text="Customers" />
-
-            <!-- Items Button -->
-            <Button onAction="#onActionItem" prefHeight="40" prefWidth="308.0" style="                         -fx-background-radius: 12;                         -fx-text-fill: white;                         -fx-font-weight: bold;                         -fx-padding: 8;                         -fx-cursor: hand;                         -fx-background-color: linear-gradient(to right, #43e97b, #38f9d7);                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 15, 0.2, 0, 8);" text="Items" />
-
-            <!-- Orders Button -->
-            <Button onAction="#onActionOrders" prefHeight="40" prefWidth="310.0" style="                         -fx-background-radius: 12;                         -fx-text-fill: white;                         -fx-font-weight: bold;                         -fx-padding: 8;                         -fx-cursor: hand;                         -fx-background-color: linear-gradient(to right, #fa709a, #fee140);                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 15, 0.2, 0, 8);" text="Orders" />
-
-            <!-- Logout Button -->
-            <Button onAction="#onActionBack" prefHeight="40" prefWidth="314.0" style="                         -fx-background-radius: 12;                         -fx-text-fill: white;                         -fx-font-weight: bold;                         -fx-padding: 8;                         -fx-cursor: hand;                         -fx-background-color: linear-gradient(to right, #f857a6, #ff5858);                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 15, 0.2, 0, 8);" text="Logout" />
-
+            <Label text="Shop Management System" style="-fx-text-fill: #ecf0f1;">
+                <font>
+                    <Font name="System" size="18.0" />
+                </font>
+            </Label>
         </VBox>
 
-    </children>
+        <!-- Main Navigation Buttons -->
+        <HBox spacing="30" alignment="CENTER">
+            <!-- Column 1 -->
+            <VBox spacing="15" alignment="CENTER">
+                <Button fx:id="btnCustomer" mnemonicParsing="false" onAction="#navigateToCustomer"
+                        prefWidth="200" prefHeight="80" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14pt; -fx-background-radius: 10;">
+                  
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    Customer Management
+                </Button>
 
-</AnchorPane>
+                <Button fx:id="btnItem" mnemonicParsing="false" onAction="#navigateToItem"
+                        prefWidth="200" prefHeight="80" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-size: 14pt; -fx-background-radius: 10;">
+
+                    Item Management
+                </Button>
+            </VBox>
+
+            <!-- Column 2 -->
+            <VBox spacing="15" alignment="CENTER">
+                <Button fx:id="btnOrder" mnemonicParsing="false" onAction="#navigateToOrder"
+                        prefWidth="200" prefHeight="80" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14pt; -fx-background-radius: 10;">
+
+                    Order Management
+                </Button>
+
+                <Button fx:id="btnOrderDetail" mnemonicParsing="false" onAction="#navigateToOrderDetail"
+                        prefWidth="200" prefHeight="80" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-size: 14pt; -fx-background-radius: 10;">
+
+                    Order Details
+                </Button>
+            </VBox>
+        </HBox>
+
+        <!-- Bottom Section -->
+        <HBox spacing="20" alignment="CENTER">
+            <Button fx:id="btnReports" mnemonicParsing="false" onAction="#navigateToReports"
+                    text="📊 Reports" style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-size: 12pt; -fx-background-radius: 8;"/>
+
+            <Button fx:id="btnExit" mnemonicParsing="false" onAction="#exitApplication"
+                    text="🚪 Exit" style="-fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-font-size: 12pt; -fx-background-radius: 8;"/>
+        </HBox>
+
+        <!-- Footer -->
+        <Label text="© 2024 Thoga Kade - Shop Management System" style="-fx-text-fill: #bdc3c7; -fx-font-size: 10pt;"/>
+    </VBox>
+</StackPane>

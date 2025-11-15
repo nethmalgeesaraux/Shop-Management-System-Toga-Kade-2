@@ -20,9 +20,17 @@ public class CustomerFormController implements Initializable {
     @FXML private ComboBox<String> cmbTitle;
     @FXML private DatePicker dpDob;
     @FXML private TableView<Customer> tblCustomer;
-    @FXML private TableColumn<Customer, String> colCustID, colTitle, colName, colAddress, colCity, colProvince, colPostalCode;
+
+    // Make sure ALL TableColumn names match EXACTLY with FXML fx:id
+    @FXML private TableColumn<Customer, String> colCustID;
+    @FXML private TableColumn<Customer, String> colTitle;
+    @FXML private TableColumn<Customer, String> colName;
     @FXML private TableColumn<Customer, LocalDate> colDob;
     @FXML private TableColumn<Customer, Double> colSalary;
+    @FXML private TableColumn<Customer, String> colAddress;
+    @FXML private TableColumn<Customer, String> colCity;
+    @FXML private TableColumn<Customer, String> colProvince;
+    @FXML private TableColumn<Customer, String> colPostalCode; // This was missing
 
     private CustomerController customerController;
     private ObservableList<Customer> customerList;
@@ -32,24 +40,16 @@ public class CustomerFormController implements Initializable {
         customerController = new CustomerController();
         customerList = FXCollections.observableArrayList();
 
-        // Initialize combo box
+        // Initialize title combo box
         cmbTitle.setItems(FXCollections.observableArrayList("Mr", "Mrs", "Miss", "Ms"));
 
-        // Initialize  columns
-        colCustID.setCellValueFactory(new PropertyValueFactory<>("custID"));
-        colTitle.setCellValueFactory(new PropertyValueFactory<>("custTitle"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("custName"));
-        colDob.setCellValueFactory(new PropertyValueFactory<>("dob"));
-        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("custAddress"));
-        colCity.setCellValueFactory(new PropertyValueFactory<>("city"));
-        colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
-        colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+        // Initialize table columns - ADD NULL CHECKS
+        initializeTableColumns();
 
         tblCustomer.setItems(customerList);
         loadAllCustomers();
 
-        // Add selection listener
+        // Add table row selection listener
         tblCustomer.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {
@@ -58,6 +58,64 @@ public class CustomerFormController implements Initializable {
                 });
     }
 
+    private void initializeTableColumns() {
+        // Add null checks for all columns
+        if (colCustID != null) {
+            colCustID.setCellValueFactory(new PropertyValueFactory<>("custID"));
+        } else {
+            System.err.println("colCustID is null!");
+        }
+
+        if (colTitle != null) {
+            colTitle.setCellValueFactory(new PropertyValueFactory<>("custTitle"));
+        } else {
+            System.err.println("colTitle is null!");
+        }
+
+        if (colName != null) {
+            colName.setCellValueFactory(new PropertyValueFactory<>("custName"));
+        } else {
+            System.err.println("colName is null!");
+        }
+
+        if (colDob != null) {
+            colDob.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        } else {
+            System.err.println("colDob is null!");
+        }
+
+        if (colSalary != null) {
+            colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        } else {
+            System.err.println("colSalary is null!");
+        }
+
+        if (colAddress != null) {
+            colAddress.setCellValueFactory(new PropertyValueFactory<>("custAddress"));
+        } else {
+            System.err.println("colAddress is null!");
+        }
+
+        if (colCity != null) {
+            colCity.setCellValueFactory(new PropertyValueFactory<>("city"));
+        } else {
+            System.err.println("colCity is null!");
+        }
+
+        if (colProvince != null) {
+            colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
+        } else {
+            System.err.println("colProvince is null!");
+        }
+
+        if (colPostalCode != null) {
+            colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+        } else {
+            System.err.println("colPostalCode is null - check FXML fx:id!");
+        }
+    }
+
+    // Rest of your methods remain the same...
     @FXML
     private void saveCustomer() {
         try {

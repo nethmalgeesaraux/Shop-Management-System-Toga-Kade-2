@@ -1,82 +1,91 @@
-
 package Controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.IOException;
 
 public class DashboardController {
 
     @FXML
-    void onActionBack(ActionEvent event) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/login.fxml"))));
-            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage1.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    private void navigateToCustomer() {
+        loadForm("/View/CustomerForm.fxml", "Customer Management");
     }
 
     @FXML
-    void onActionCustomer(ActionEvent event) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/CustomerForm.fxml"))));
-            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage1.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    private void navigateToItem() {
+        loadForm("/View/ItemFrom.fxml", "Item Management");
     }
 
     @FXML
-    void onActionItem(ActionEvent event) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/ItemFrom.fxml"))));
-            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage1.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    private void navigateToOrder() {
+        loadForm("/View/OrderFrom..fxml", "Order Management");
     }
 
     @FXML
-    void onActionOrders(ActionEvent event) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/Orders.fxml"))));
-            Stage stage1 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage1.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.show();
+    private void navigateToOrderDetail() {
+        loadForm("/View/OrderDetailFrom..fxml", "Order Detail Management");
     }
 
-    public void onActionOrderDetail(ActionEvent actionEvent) {
-        Stage stage = new Stage();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/OrderDetailFrom..fxml"))));
-            Image event = null;
-            Stage stage1 = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage1.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    @FXML
+    private void navigateToReports() {
+        showAlert("Info", "Reports feature will be implemented soon!", Alert.AlertType.INFORMATION);
+    }
+
+    @FXML
+    private void exitApplication() {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmation.setTitle("Exit Application");
+        confirmation.setHeaderText("Confirm Exit");
+        confirmation.setContentText("Are you sure you want to exit Thoga Kade Management System?");
+
+        if (confirmation.showAndWait().get() == javafx.scene.control.ButtonType.OK) {
+            System.exit(0);
         }
-        stage.show();
+    }
+
+    private void loadForm(String fxmlPath, String title) {
+        try {
+            System.out.println("Loading FXML from: " + fxmlPath);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle(title);
+            stage.setResizable(false);
+
+            // Set application icon
+            try {
+                stage.getIcons().add(new javafx.scene.image.Image(getClass().getResourceAsStream("/images/icon.png")));
+            } catch (Exception e) {
+                System.out.println("Icon not found: " + e.getMessage());
+            }
+
+            stage.show();
+
+        } catch (IOException e) {
+            System.err.println("Error loading FXML: " + fxmlPath);
+            System.err.println("Error details: " + e.getMessage());
+            e.printStackTrace();
+            showAlert("Error", "Cannot load " + title + ": " + e.getMessage(), Alert.AlertType.ERROR);
+        } catch (NullPointerException e) {
+            System.err.println("FXML file not found: " + fxmlPath);
+            System.err.println("Current class: " + getClass().getName());
+            System.err.println("Class location: " + getClass().getResource("."));
+            e.printStackTrace();
+            showAlert("Error", "Form file not found: " + fxmlPath, Alert.AlertType.ERROR);
+        }
+    }
+
+    private void showAlert(String title, String message, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.show();
     }
 }
-
-
