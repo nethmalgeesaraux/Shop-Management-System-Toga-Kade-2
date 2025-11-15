@@ -68,7 +68,7 @@ public class DashboardController {
     public void onActionOrderDetail(ActionEvent actionEvent) {
         Stage stage = new Stage();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/OrderDetail.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/OrderDetailFrom..fxml"))));
             Image event = null;
             Stage stage1 = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage1.close();
