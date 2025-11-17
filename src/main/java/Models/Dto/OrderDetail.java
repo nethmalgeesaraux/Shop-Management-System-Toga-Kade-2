@@ -17,7 +17,7 @@ public class OrderDetail {
         this.discount = discount;
     }
 
-    // Getters and Setters
+
     public String getOrderID() { return orderID; }
     public void setOrderID(String orderID) { this.orderID = orderID; }
 

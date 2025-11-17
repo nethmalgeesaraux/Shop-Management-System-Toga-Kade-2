@@ -15,11 +15,16 @@ import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
 
-    @FXML private TextField txtItemCode, txtDescription, txtPackSize, txtUnitPrice, txtQtyOnHand;
-    @FXML private TableView<Item> tblItem;
-    @FXML private TableColumn<Item, String> colItemCode, colDescription, colPackSize;
-    @FXML private TableColumn<Item, Double> colUnitPrice;
-    @FXML private TableColumn<Item, Integer> colQtyOnHand;
+    @FXML
+    private TextField txtItemCode, txtDescription, txtPackSize, txtUnitPrice, txtQtyOnHand;
+    @FXML
+    private TableView<Item> tblItem;
+    @FXML
+    private TableColumn<Item, String> colItemCode, colDescription, colPackSize;
+    @FXML
+    private TableColumn<Item, Double> colUnitPrice;
+    @FXML
+    private TableColumn<Item, Integer> colQtyOnHand;
 
     private ItemController itemController;
     private ObservableList<Item> itemList;
@@ -29,7 +34,7 @@ public class ItemFormController implements Initializable {
         itemController = new ItemController();
         itemList = FXCollections.observableArrayList();
 
-        // Initialize table columns
+
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
@@ -39,7 +44,7 @@ public class ItemFormController implements Initializable {
         tblItem.setItems(itemList);
         loadAllItems();
 
-        // Add table row selection listener
+
         tblItem.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {
@@ -183,7 +188,7 @@ public class ItemFormController implements Initializable {
             return false;
         }
 
-        // Validate Item Code format
+
         if (!txtItemCode.getText().matches("P\\d{3}")) {
             showAlert("Validation Error", "Item Code must be in format P001, P002, etc.", Alert.AlertType.WARNING);
             return false;

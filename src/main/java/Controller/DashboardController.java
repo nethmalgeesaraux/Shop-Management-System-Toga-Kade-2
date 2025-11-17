@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class DashboardController {
@@ -59,7 +60,7 @@ public class DashboardController {
             stage.setTitle(title);
             stage.setResizable(false);
 
-            // Set application icon
+
             try {
                 stage.getIcons().add(new javafx.scene.image.Image(getClass().getResourceAsStream("/images/icon.png")));
             } catch (Exception e) {

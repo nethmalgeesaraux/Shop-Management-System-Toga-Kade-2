@@ -22,24 +22,38 @@ import java.util.ResourceBundle;
 
 public class OrderFormController implements Initializable {
 
-    @FXML private TextField txtOrderID, txtOrderQty, txtDiscount;
-    @FXML private DatePicker dpOrderDate;
-    @FXML private ComboBox<String> cmbCustomer, cmbItem;
-    @FXML private TableView<OrderItem> tblOrderItems;
-    @FXML private TableView<Order> tblOrders;
-    @FXML private Label lblTotalAmount;
+    @FXML
+    private TextField txtOrderID, txtOrderQty, txtDiscount;
+    @FXML
+    private DatePicker dpOrderDate;
+    @FXML
+    private ComboBox<String> cmbCustomer, cmbItem;
+    @FXML
+    private TableView<OrderItem> tblOrderItems;
+    @FXML
+    private TableView<Order> tblOrders;
+    @FXML
+    private Label lblTotalAmount;
 
     // Order Items Table Columns
-    @FXML private TableColumn<OrderItem, String> colItemCodeOrder, colDescriptionOrder;
-    @FXML private TableColumn<OrderItem, Integer> colQtyOrder;
-    @FXML private TableColumn<OrderItem, Double> colUnitPriceOrder, colDiscountOrder, colTotalOrder;
-    @FXML private TableColumn<OrderItem, String> colActionOrder;
+    @FXML
+    private TableColumn<OrderItem, String> colItemCodeOrder, colDescriptionOrder;
+    @FXML
+    private TableColumn<OrderItem, Integer> colQtyOrder;
+    @FXML
+    private TableColumn<OrderItem, Double> colUnitPriceOrder, colDiscountOrder, colTotalOrder;
+    @FXML
+    private TableColumn<OrderItem, String> colActionOrder;
 
     // Orders History Table Columns
-    @FXML private TableColumn<Order, String> colOrderID, colCustomerID, colCustomerName;
-    @FXML private TableColumn<Order, LocalDate> colOrderDate;
-    @FXML private TableColumn<Order, Double> colOrderTotal;
-    @FXML private TableColumn<Order, String> colOrderAction;
+    @FXML
+    private TableColumn<Order, String> colOrderID, colCustomerID, colCustomerName;
+    @FXML
+    private TableColumn<Order, LocalDate> colOrderDate;
+    @FXML
+    private TableColumn<Order, Double> colOrderTotal;
+    @FXML
+    private TableColumn<Order, String> colOrderAction;
 
     private OrderController orderController;
     private CustomerController customerController;
@@ -51,29 +65,29 @@ public class OrderFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Initialize controllers
+
         orderController = new OrderController();
         customerController = new CustomerController();
         itemController = new ItemController();
 
-        // Initialize observable lists
+
         orderItemsList = FXCollections.observableArrayList();
         ordersList = FXCollections.observableArrayList();
         customerIDs = FXCollections.observableArrayList();
         itemCodes = FXCollections.observableArrayList();
 
-        // Set default values
+
         dpOrderDate.setValue(LocalDate.now());
         txtDiscount.setText("0");
 
-        // Initialize UI components
+
         initializeOrderItemsTable();
         initializeOrdersTable();
         loadCustomers();
         loadItems();
         loadAllOrders();
 
-        // Generate initial order ID
+
         generateOrderId();
     }
 
@@ -276,6 +290,7 @@ public class OrderFormController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void clearOrder() {
         orderItemsList.clear();
@@ -459,15 +474,32 @@ public class OrderFormController implements Initializable {
             this.discount = discount;
         }
 
-        public String getItemCode() { return itemCode; }
-        public String getDescription() { return description; }
-        public int getQuantity() { return quantity; }
-        public double getUnitPrice() { return unitPrice; }
-        public double getDiscount() { return discount; }
+        public String getItemCode() {
+            return itemCode;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public double getUnitPrice() {
+            return unitPrice;
+        }
+
+        public double getDiscount() {
+            return discount;
+        }
+
         public double getTotal() {
             return quantity * unitPrice * (1 - discount / 100);
         }
 
-        public void setQuantity(int quantity) { this.quantity = quantity; }
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
     }
 }

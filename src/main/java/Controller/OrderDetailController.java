@@ -2,6 +2,7 @@ package Controller;
 
 import Models.Db.DatabaseConnection;
 import Models.Dto.OrderDetail;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -237,7 +238,7 @@ public class OrderDetailController {
         try {
             connection.setAutoCommit(false);
 
-            // Get current quantity
+
             String getCurrentQtySql = "SELECT OrderQTY FROM OrderDetail WHERE OrderID=? AND ItemCode=?";
             PreparedStatement getStmt = connection.prepareStatement(getCurrentQtySql);
             getStmt.setString(1, orderID);
@@ -248,7 +249,7 @@ public class OrderDetailController {
                 int currentQty = rs.getInt("OrderQTY");
                 int quantityDifference = newQuantity - currentQty;
 
-                // Update order detail
+
                 String updateSql = "UPDATE OrderDetail SET OrderQTY=? WHERE OrderID=? AND ItemCode=?";
                 PreparedStatement updateStmt = connection.prepareStatement(updateSql);
                 updateStmt.setInt(1, newQuantity);
@@ -256,7 +257,7 @@ public class OrderDetailController {
                 updateStmt.setString(3, itemCode);
                 updateStmt.executeUpdate();
 
-                // Update item stock
+
                 if (quantityDifference != 0) {
                     String updateStockSql = "UPDATE Item SET QtyOnHand = QtyOnHand - ? WHERE ItemCode = ?";
                     PreparedStatement stockStmt = connection.prepareStatement(updateStockSql);
@@ -316,7 +317,6 @@ public class OrderDetailController {
             );
             detail.setDescription(rs.getString("Description"));
             detail.setUnitPrice(rs.getDouble("UnitPrice"));
-            // Store additional info in description field
             detail.setDescription(detail.getDescription() + " | Order Date: " +
                     rs.getDate("OrderDate") + " | Customer: " +
                     rs.getString("CustName"));

@@ -15,12 +15,18 @@ import java.util.ResourceBundle;
 
 public class OrderDetailFormController implements Initializable {
 
-    @FXML private TextField txtOrderID, txtItemCode, txtOrderQty, txtDiscount;
-    @FXML private TableView<OrderDetail> tblOrderDetails;
-    @FXML private TableColumn<OrderDetail, String> colOrderID, colItemCode, colDescription;
-    @FXML private TableColumn<OrderDetail, Integer> colOrderQty;
-    @FXML private TableColumn<OrderDetail, Double> colUnitPrice, colDiscount, colTotal;
-    @FXML private Label lblTotalSales;
+    @FXML
+    private TextField txtOrderID, txtItemCode, txtOrderQty, txtDiscount;
+    @FXML
+    private TableView<OrderDetail> tblOrderDetails;
+    @FXML
+    private TableColumn<OrderDetail, String> colOrderID, colItemCode, colDescription;
+    @FXML
+    private TableColumn<OrderDetail, Integer> colOrderQty;
+    @FXML
+    private TableColumn<OrderDetail, Double> colUnitPrice, colDiscount, colTotal;
+    @FXML
+    private Label lblTotalSales;
 
     private OrderDetailController orderDetailController;
     private ObservableList<OrderDetail> orderDetailList;

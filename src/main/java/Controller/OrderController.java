@@ -4,6 +4,7 @@ import Models.Db.DatabaseConnection;
 import Models.Dto.Order;
 import Models.Dto.OrderDetail;
 import Models.Dto.Item;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class OrderController {
         try {
             connection.setAutoCommit(false);
 
-            // 1. Save order
+
             String orderSql = "INSERT INTO Orders (OrderID, OrderDate, CustID) VALUES (?, ?, ?)";
             PreparedStatement orderStmt = connection.prepareStatement(orderSql);
             orderStmt.setString(1, order.getOrderID());
@@ -25,7 +26,7 @@ public class OrderController {
             orderStmt.setString(3, order.getCustID());
             orderStmt.executeUpdate();
 
-            // 2. Save order details and update item quantities
+
             String detailSql = "INSERT INTO OrderDetail (OrderID, ItemCode, OrderQTY, Discount) VALUES (?, ?, ?, ?)";
             String updateItemSql = "UPDATE Item SET QtyOnHand = QtyOnHand - ? WHERE ItemCode = ?";
 
@@ -33,7 +34,7 @@ public class OrderController {
             PreparedStatement updateStmt = connection.prepareStatement(updateItemSql);
 
             for (OrderDetail detail : orderDetails) {
-                // Check stock availability
+
                 String checkStockSql = "SELECT QtyOnHand FROM Item WHERE ItemCode = ?";
                 PreparedStatement checkStockStmt = connection.prepareStatement(checkStockSql);
                 checkStockStmt.setString(1, detail.getItemCode());
@@ -49,20 +50,20 @@ public class OrderController {
                     throw new SQLException("Item not found: " + detail.getItemCode());
                 }
 
-                // Save order detail
+
                 detailStmt.setString(1, detail.getOrderID());
                 detailStmt.setString(2, detail.getItemCode());
                 detailStmt.setInt(3, detail.getOrderQty());
                 detailStmt.setDouble(4, detail.getDiscount());
                 detailStmt.addBatch();
 
-                // Update item quantity
+
                 updateStmt.setInt(1, detail.getOrderQty());
                 updateStmt.setString(2, detail.getItemCode());
                 updateStmt.addBatch();
             }
 
-            // Execute batches
+
             detailStmt.executeBatch();
             updateStmt.executeBatch();
 
@@ -165,7 +166,7 @@ public class OrderController {
         try {
             connection.setAutoCommit(false);
 
-            // 1. Restore item quantities
+
             String getDetailsSql = "SELECT ItemCode, OrderQTY FROM OrderDetail WHERE OrderID = ?";
             PreparedStatement getDetailsStmt = connection.prepareStatement(getDetailsSql);
             getDetailsStmt.setString(1, orderID);
@@ -181,13 +182,13 @@ public class OrderController {
             }
             restoreStmt.executeBatch();
 
-            // 2. Delete order details
+
             String deleteDetailsSql = "DELETE FROM OrderDetail WHERE OrderID = ?";
             PreparedStatement deleteDetailsStmt = connection.prepareStatement(deleteDetailsSql);
             deleteDetailsStmt.setString(1, orderID);
             deleteDetailsStmt.executeUpdate();
 
-            // 3. Delete order
+
             String deleteOrderSql = "DELETE FROM Orders WHERE OrderID = ?";
             PreparedStatement deleteOrderStmt = connection.prepareStatement(deleteOrderSql);
             deleteOrderStmt.setString(1, orderID);
@@ -232,5 +233,5 @@ public class OrderController {
         return rs.next();
     }
 
-    // ... other methods
+
 }

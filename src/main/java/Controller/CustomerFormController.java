@@ -16,21 +16,34 @@ import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
 
-    @FXML private TextField txtCustID, txtCustName, txtSalary, txtCustAddress, txtCity, txtProvince, txtPostalCode;
-    @FXML private ComboBox<String> cmbTitle;
-    @FXML private DatePicker dpDob;
-    @FXML private TableView<Customer> tblCustomer;
+    @FXML
+    private TextField txtCustID, txtCustName, txtSalary, txtCustAddress, txtCity, txtProvince, txtPostalCode;
+    @FXML
+    private ComboBox<String> cmbTitle;
+    @FXML
+    private DatePicker dpDob;
+    @FXML
+    private TableView<Customer> tblCustomer;
 
-    // Make sure ALL TableColumn names match EXACTLY with FXML fx:id
-    @FXML private TableColumn<Customer, String> colCustID;
-    @FXML private TableColumn<Customer, String> colTitle;
-    @FXML private TableColumn<Customer, String> colName;
-    @FXML private TableColumn<Customer, LocalDate> colDob;
-    @FXML private TableColumn<Customer, Double> colSalary;
-    @FXML private TableColumn<Customer, String> colAddress;
-    @FXML private TableColumn<Customer, String> colCity;
-    @FXML private TableColumn<Customer, String> colProvince;
-    @FXML private TableColumn<Customer, String> colPostalCode; // This was missing
+
+    @FXML
+    private TableColumn<Customer, String> colCustID;
+    @FXML
+    private TableColumn<Customer, String> colTitle;
+    @FXML
+    private TableColumn<Customer, String> colName;
+    @FXML
+    private TableColumn<Customer, LocalDate> colDob;
+    @FXML
+    private TableColumn<Customer, Double> colSalary;
+    @FXML
+    private TableColumn<Customer, String> colAddress;
+    @FXML
+    private TableColumn<Customer, String> colCity;
+    @FXML
+    private TableColumn<Customer, String> colProvince;
+    @FXML
+    private TableColumn<Customer, String> colPostalCode; // This was missing
 
     private CustomerController customerController;
     private ObservableList<Customer> customerList;
@@ -40,16 +53,16 @@ public class CustomerFormController implements Initializable {
         customerController = new CustomerController();
         customerList = FXCollections.observableArrayList();
 
-        // Initialize title combo box
+
         cmbTitle.setItems(FXCollections.observableArrayList("Mr", "Mrs", "Miss", "Ms"));
 
-        // Initialize table columns - ADD NULL CHECKS
+
         initializeTableColumns();
 
         tblCustomer.setItems(customerList);
         loadAllCustomers();
 
-        // Add table row selection listener
+
         tblCustomer.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {
@@ -115,7 +128,7 @@ public class CustomerFormController implements Initializable {
         }
     }
 
-    // Rest of your methods remain the same...
+
     @FXML
     private void saveCustomer() {
         try {
